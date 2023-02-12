@@ -1,0 +1,35 @@
+class Solution {
+    public String convert(String A, int B) {
+        if(B == 1 || B > A.length())
+            return A;
+            
+        String result = "";
+        String[] rows = new String[B];
+        boolean down = true;
+        int ndx = 0;
+        
+        for(int i=0; i<A.length(); i++){
+            char c = A.charAt(i);
+            
+            if(rows[ndx] != null) rows[ndx] += c;
+            else rows[ndx] = String.valueOf(c);
+            
+            if(down) ndx++;
+            else ndx--;
+            
+            if(ndx == B){
+                ndx-=2;
+                down = false;
+            }
+            else if(ndx == -1){
+                ndx+=2;
+                down = true;
+            }
+        }
+        
+        for(int i=0; i<B; i++)
+            result += rows[i];
+        
+        return result;
+    }
+}
