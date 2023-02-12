@@ -15,6 +15,7 @@ class Solution {
         }
         else
             d1=nums3[n/2];
+
         return d1;
     }
 }
